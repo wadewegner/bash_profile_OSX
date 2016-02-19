@@ -1,11 +1,26 @@
 alias ls='ls -lhaG'
 alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+alias bp="subl ~/.bash_profile"
 alias reload='source ~/.bash_profile'
-alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias cls='clear'
 alias f='open -a Finder ./'  
 alias flushdns='dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
+
+# git
+alias ga="git add"
+alias gc="git commit -m"
+alias gpd="git push origin develop"
+alias gpm="git push origin master"
+alias ungit="find . -name '.git' -exec rm -rf {} \;"
 alias reset='git reset --hard HEAD;git clean -d -f .'
+alias gs='git status -s'
+alias ignore='git update-index --assume-unchanged'
+alias unignore='git update-index --no-assume-unchanged'
+alias latest='git log --format="%H" -n 1'
+
+# Get your current public IP
+alias ip="curl icanhazip.com"
 
 export PATH=~/bin:$PATH
 
