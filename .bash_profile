@@ -18,6 +18,7 @@ alias gs='git status -s'
 alias ignore='git update-index --assume-unchanged'
 alias unignore='git update-index --no-assume-unchanged'
 alias latest='git log --format="%H" -n 1'
+alias cleanbranches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
 
 # Get your current public IP
 alias ip="curl icanhazip.com"
