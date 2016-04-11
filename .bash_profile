@@ -1,4 +1,4 @@
-alias ls='ls -lhaG'
+alias ll='ls -lhaG'
 alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias bp="subl ~/.bash_profile"
 alias reload='source ~/.bash_profile'
@@ -19,10 +19,36 @@ alias ignore='git update-index --assume-unchanged'
 alias unignore='git update-index --no-assume-unchanged'
 alias latest='git log --format="%H" -n 1'
 
+# demo aliases
+alias getsrc='cp -r /Users/wade.wegner/Projects/Github/soma/source/* .;cp /Users/wade.wegner/Projects/Github/soma/source/.gitignore .'
+
 # Get your current public IP
 alias ip="curl icanhazip.com"
 
+# cd behavior
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
+#paths
+alias waw="cd /Users/wade.wegner/Projects"
+alias wawg="cd /Users/wade.wegner/Projects/Github/WadeWegner/"
+alias wawd="cd /Users/wade.wegner/Projects/Github/DeveloperForce/"
+alias wawgo="cd /Users/wade.wegner/Projects/Go/src"
+alias beer="cd /Users/wade.wegner/Projects/Github/WadeWegner/internet-of-beers"
+
+export GOPATH=/Users/wade.wegner/Projects/Go
 export PATH=~/bin:$PATH
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:/Users/wade.wegner/SDKs/connectiq-sdk-mac-1.2.5/bin
+export PATH=$PATH:/Users/wade.wegner/SDKs/phantomjs-2.1.1-macosx/bin
+
+# needed?
+# eval "$(rbenv init -)"
 
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
@@ -58,9 +84,13 @@ bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
+# Git branch in prompt.
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
 print_before_the_prompt () {
-#    printf "\n$txtred%s: $bldgrn%s $txtpur%s\n$txtrst" "$USER" "$PWD" "$(vcprompt)"
-    printf "\n$txtred%s: $bldgrn%s $txtpur%s\n$txtrst" "$USER" "$PWD"
+    printf "\n$txtred%s: $bldgrn%s $txtpur%s\n$txtrst" "$USER" "$PWD" "$(parse_git_branch)"
 }
 
 PROMPT_COMMAND=print_before_the_prompt
