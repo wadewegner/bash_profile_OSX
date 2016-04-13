@@ -18,6 +18,7 @@ alias gs='git status -s'
 alias ignore='git update-index --assume-unchanged'
 alias unignore='git update-index --no-assume-unchanged'
 alias latest='git log --format="%H" -n 1'
+alias cleanbranches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
 
 # demo aliases
 alias getsrc='cp -r /Users/wade.wegner/Projects/Github/soma/source/* .;cp /Users/wade.wegner/Projects/Github/soma/source/.gitignore .'
